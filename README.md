@@ -1,4 +1,5 @@
-# SEEWEED, The fairy tale maker AI
+# SEEWEED
+The fairy tale maker AI
 ## Install
 1. setup Virtual environment:
     ```
