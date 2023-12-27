@@ -1,3 +1,5 @@
+# README
+## Presetting
 1. setup Virtual environment:
     ```
     py -3.10 -m venv env
@@ -13,3 +15,5 @@
 6. run server:
     ```
     python manage.py runserver
+## **NOTE**
+You have to posses your own OpenAI API Key!!
