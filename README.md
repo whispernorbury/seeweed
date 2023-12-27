@@ -18,3 +18,7 @@
     python manage.py runserver
 ## **NOTE**
 You have to posses your own OpenAI API Key!!
+
+### About
+[https://sites.google.com/yonsei.ac.kr/genaicontest] About Contest
+Copyright 2023. TeamDahe all rights reserved.
