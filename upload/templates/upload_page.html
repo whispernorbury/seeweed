@@ -1,0 +1,469 @@
+<!-- Copyright 2023. 정우담 all rights reserved about static png files. -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+        <title>Seeweed - Upload your file.</title>
+        <meta charset="utf-8">
+        <style>
+            select {
+                /* Reset Select */
+                appearance: none;
+                outline: 10px red;
+                border: 0;
+                box-shadow: none;
+                /* Personalize */
+                flex: 1;
+                padding: 0 1em;
+                color: #fff;
+                background-color: rgb(75, 80, 84);
+                background-image: none;
+                cursor: pointer;
+            }
+            /* Remove IE arrow */
+            select::-ms-expand { display: none; }
+            /* Custom Select wrapper */
+            .select {
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                display: flex;
+                width: 20em;
+                height: 3em;
+                border-radius: .25em;
+                overflow: hidden;
+            }
+            /* Arrow */
+            .select::after {
+                content: '\25BC';
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 1em;
+                background-color: #646767;
+                transition: .25s all ease;
+                pointer-events: none;
+                }
+                /* Transition */
+                .select:hover::after {
+                color: #21b974;
+            }
+            body {
+                text-align: center;
+                align-items: center;
+                background-color: rgb(35, 35, 35);
+            }
+            h1 {
+                text-align: center;
+                margin-top: 3em;
+                margin-bottom: 2em;
+                color: rgb(255, 255, 255);
+            }
+            #mainbox{
+                text-align: center;
+                padding: 0px;
+                width: 500px;
+                height: 200px;
+                border: 4px solid #1c915c;
+                border-radius: 21px;
+                margin: auto;
+                transition: all 0.5s;
+            }
+            form .para {
+                position: absolute;
+                top: 220px;
+                width: 500px;
+                height: 200px;
+                text-align: center;
+                line-height: 170px;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 18px;
+                margin: auto;
+                z-index: 0;
+            }
+            form input[type="file"]{
+                cursor: pointer;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                outline: none;
+                opacity: 0;
+                z-index: 1;
+            }
+            #fileInputbox {
+                display: none;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                outline: 0;
+            }
+            form button:enabled{
+                font-size: 1em;
+                margin: 0;
+                color: #fff;
+                background: #16a085;
+                border: none;
+                width: 508px;
+                height: 35px;
+                margin-top: -20px;
+                margin-left: -4px;
+                border-radius: 4px;
+                border-bottom: 4px solid #117A60;
+                transition: all .2s ease;
+                outline: none;
+            }
+            form button:disabled {
+                font-size: 1em;
+                margin: 0;
+                color: #7f7f7f;
+                background: #0c5546;
+                border: none;
+                width: 508px;
+                height: 35px;
+                margin-top: -20px;
+                margin-left: -4px;
+                border-radius: 4px;
+                border-bottom: 4px solid #05281f;
+                outline: none;
+            }
+            .loading {
+                font-family: Arial, Helvetica, sans-serif;
+                padding-top: 0.3em;
+                font-size: 1.4em;
+                text-align: center;
+                display: none;
+                margin: 0;
+                color: rgb(146, 146, 146);
+                background: rgb(7, 57, 47);
+                border: none;
+                width: 508px;
+                height: 35px;
+                margin-top: -20px;
+                margin-left: -4px;
+                border-radius: 4px;
+                border-bottom: 4px solid #073227;
+                outline: none;
+            }
+            form button:enabled:hover{
+                background: #128165;
+            }
+            form button:enabled:active{
+                border:0;
+            }
+            #mainbox:hover {
+                border: 4px solid #ffffff;
+                box-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 7px #0fa, 0 0 15px #0fa;
+            }
+            #mainbox.hovered {
+                border: 4px solid #ffffff;
+                box-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 7px #0fa, 0 0 15px #0fa;
+            }
+            #upload_output.neon {
+                font-size: 24px;
+                text-shadow: 0 0 3px white, 0 0 6px white, 0 0 16px red, 0 0 26px red;
+            }
+            .radiobox {
+                height: 120px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                bottom: 50px;
+                margin-top: 20px;
+            }
+            .radiobox input[type="radio"] {
+                display: none;
+            }
+            label:hover p {
+               opacity: 1; 
+            }
+            label p {
+                padding-top: 47px;
+                width:117px;
+                height:70px;
+                opacity: 0;
+                color: white;
+                position: relative;
+                bottom: 132px;
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                border: solid 4px white;
+                border-radius: 21px;
+                margin: 0;
+                left: 1px;
+            }
+            label:hover input[type="radio"] + img { filter: brightness(15%); }
+            /* check된 이미지 hover 밝기 */
+            label:hover input[type="radio"]:checked + img { filter: brightness(40%); }
+            label { height: 100%; }
+            /* check 안된 이미지 */
+            label img { filter: brightness(30%); }
+            /* checked된 이미지  */
+            input[type="radio"]:checked + img { filter: brightness(100%); }
+            .radiobox #ageInfoBox {
+                margin-top: 30px;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 30px;
+                width: 200px; 
+                height: 117px; 
+                padding-left: 15px;
+                padding-right: 15px;
+                color: white;
+                font-size: 14px;
+                font-family: Arial, Helvetica, sans-serif;
+                border: 2px solid white;
+            }
+            #ageInfoBox #informAge {
+                padding-top: 20px;
+            }
+        </style>
+        <style>
+            .form__group {
+                font-family: "Poppins", sans-serif;
+                position: fixed;
+                top: 30px;
+                left: 30px;
+                padding: 15px 0 0;
+                margin-top: 10px;
+                width: 30%;
+            }
+            .form__field {
+                font-family: inherit;
+                width: 100%;
+                border: 0;
+                border-bottom: 2px solid #9b9b9b;
+                outline: 0;
+                font-size: 0.9rem;
+                color: #fff;
+                padding: 7px 0;
+                background: transparent;
+                transition: border-color 0.2s;
+            }
+            .form__field::placeholder { color: transparent; }
+            .form__field:placeholder-shown ~ .form__label {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }
+            .form__label {
+                position: absolute;
+                top: 1;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: #9b9b9b;
+            }
+            .form__field:focus {
+                padding-bottom: 6px;
+                font-weight: 700;
+                border-width: 3px;
+                border-image: linear-gradient(to right, #11998e, #38ef7d);
+                border-image-slice: 1;
+            }
+            .form__field:focus ~ .form__label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: #11998e;
+                font-weight: 700;
+            }
+            .form__field:required, .form__field:invalid { box-shadow: none; }
+            #label_juni:hover {
+                cursor: pointer;
+            }
+            #label_seni:hover {
+                cursor: pointer;
+            }
+            #uploadBtn:enabled {
+                cursor: pointer;
+            }
+            select:disabled:hover {
+                cursor: default;
+            }
+            input[type="file"]:disabled:hover {
+                cursor: default;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>SeeWeed, Your Assistant.</h1>
+        <form id="mainbox" class="d-grid gap-2 col-6 mx-auto">
+            <input type="file" id="fileInput" accept=".txt" onchange="displayFile()">
+            <div id="fileInputbox"></div>
+            <p id="upload_output" class="para">Drag your text files here or click this box.</p>
+            <img src="{% static 'imgs/sw.png' %}" style="height: 3em; position: relative; right: 227px; top: -250px">
+            <img src="{% static 'imgs/seeweed.png' %}" style="height: 4em; position: relative; left: 226px; bottom: 20px;">
+            <div class="radiobox">
+                <label id="label_juni">
+                    <input type="radio" name="age" value="junior" id="junior" checked>
+                    <img src="{% static 'imgs/junior2.png' %}">
+                    <p>Junior</p>
+                </label>
+                <div id="ageInfoBox">
+                    <p id="informAge">Select Your Age.</p>
+                </div>
+                <label id="label_seni">
+                    <input type="radio" name="age" value="senior" id="senior">
+                    <img src="{% static 'imgs/senior2.png' %}">
+                    <p>Senior</p>
+                </label>
+            </div>
+            <button id="uploadBtn" onclick="readFile()" type="button" class="btn btn-primary" disabled>Upload</button>
+            <div id="loadingMessage" class="loading">Loading</div>
+            <div class="select">
+                <select id="TTS_select">
+                    {% for tts in tts_models %}
+                    <option value='{{ tts|slice:"0:-8" }}'>{{ tts|slice:"0:-8" }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form__group field">
+                <input type="input" class="form__field" placeholder="Your OpenAI API Key" name="tokenStr" id='tokenStr' required />
+                <label for="tokenStr" class="form__label">API Key</label>
+            </div>
+        </form>
+    </body>
+    <script> // hover radio -> give user information about (junior input), (senior input)
+        document.getElementById('label_juni').addEventListener('mouseover', function() {
+            document.getElementById('ageInfoBox').style.opacity = "1";
+            document.getElementById('informAge').innerHTML = "AI makes text into Fairy tale book for youngers.";
+        });
+        document.getElementById('label_seni').addEventListener('mouseover', function() {
+            document.getElementById('ageInfoBox').style.opacity = "1";
+            document.getElementById('informAge').innerHTML = "AI summarizes your text and makes Multi-Media (recommended for Adults).";
+        });
+        document.getElementById('label_juni').addEventListener('mouseout', function() {
+            document.getElementById('informAge').innerHTML = "Select Your Age.";
+            document.getElementById('ageInfoBox').style.opacity = "0";
+        });
+        document.getElementById('label_seni').addEventListener('mouseout', function() {
+            document.getElementById('informAge').innerText = "Select Your Age.";
+            document.getElementById('ageInfoBox').style.opacity = "0";
+        });
+    </script>
+    <script> // drag and drop implementation
+        const dropZone = document.getElementById('mainbox');
+        dropZone.addEventListener('dragover', (e) => {
+            dropZone.classList.add('hovered');
+        });
+        dropZone.addEventListener('dragleave', ()=> {
+            dropZone.classList.remove('hovered');
+        });
+        dropZone.addEventListener('drop', (event) => {
+            dropZone.classList.remove('hovered');
+        });
+    </script>
+    <script> // loading and block incorrect input from user
+        function startLoading() {
+            document.getElementById("uploadBtn").style.display = "none";
+            document.getElementById("loadingMessage").style.display = "block";
+            document.getElementById("fileInput").setAttribute('disabled', 'true');
+            document.getElementById("junior").setAttribute('disabled', 'true');
+            document.getElementById("senior").setAttribute('disabled', 'true');
+            document.getElementById("TTS_select").setAttribute('disabled', 'true');
+            document.getElementById("tokenStr").setAttribute('disabled', 'true');
+            var loadingElement = document.getElementById("loadingMessage");
+            var dots = 0;
+            var intervalID = setInterval(function() {
+                dots = (dots + 1) % 4;
+                var newLoadingText = 'Loading' + '.'.repeat(dots);
+                loadingElement.innerHTML = newLoadingText;
+            }, 700);
+        }
+    </script>
+    <script> // display File name of User input
+        function displayFile() {
+            var fileIn = document.getElementById("fileInput");
+            if (fileInput.files.length > 0) {
+                var fileNameIn = fileIn.files[0].name;
+                document.getElementById("upload_output").innerHTML = fileNameIn;
+                document.getElementById("uploadBtn").disabled = false;
+            }
+            else {
+                document.getElementById("upload_output").innerHTML = "Drag your text files here or click this box.";
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous">
+    </script>
+    <script> // post request
+        function readFile() {
+            // Get the file input element
+            var fileInput = document.getElementById('fileInput');
+            var fileModel = document.getElementById('TTS_select').value;
+            var fileAge = document.querySelector('input[name="age"]:checked').value;
+            var tokenStr = document.getElementById('tokenStr').value;
+            // Check if a file is selected
+            if (fileInput.files.length > 0) {
+                var selectedFile = fileInput.files[0];
+                var filename = selectedFile.name;
+                // Create a FileReader object
+                var reader = new FileReader();
+                // Define a function to be executed when the file is successfully read
+                reader.onload = function(event) {
+                    var fileContent = event.target.result;
+                    console.log(fileContent);
+                    // Send the file content to the backend
+                    sendFileContent(fileContent, filename, fileModel, fileAge, tokenStr);
+                };
+                // Read the file as text
+                reader.readAsText(selectedFile);
+                startLoading();
+            }
+        }
+        function sendFileContent(fileContent, filename, fileModel, fileAge, tokenStr) {
+            // Set up the Fetch API to send a POST request
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: fileContent,
+                    name: filename,
+                    model: fileModel,
+                    age: fileAge,
+                    key: tokenStr,
+                }),
+            })
+            .then(response => {
+                if (response.ok) {
+                // Assuming your server returns a JSON object with a 'redirect' key
+                return response.json();
+                } else {
+                throw new Error('Failed to fetch data');
+                }
+            })
+            .then(data => {
+                // Check if the server is instructing a redirect
+                // Redirect the user on the client side
+                window.location.href = "http://127.0.0.1:8000/read/" + data.title;
+            })
+            .catch(error => {
+                document.getElementById('upload_output').innerText = "Click here and try again.";
+                document.getElementById('upload_output').classList.add('neon');
+                document.getElementById('fileInput').style.display = 'none';
+                document.getElementById('fileInputbox').style.display = 'block';
+                document.getElementById('upload_output').addEventListener('click', () => {
+                    location.reload();
+                });
+                document.getElementById('fileInputbox').addEventListener('click', () => {
+                    location.reload();
+                });
+                // Handle errors
+            });
+        }
+    </script>
+</html>
