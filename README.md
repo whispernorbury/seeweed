@@ -1,4 +1,13 @@
 # README
+## Add Your voice!
+* Import <YourGlowTTS>.tar to
+```
+/TTS/data/glowtts-v2/
+```
+* Import <YourHifigan>.tar to
+```
+/TTS/data/hifigan-v2/
+```
 ## Presetting
 1. setup Virtual environment:
     ```
