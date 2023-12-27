@@ -18,7 +18,7 @@
 4. import libraries:
     ```
     pip install -r requirements.txt
-5. \Lib\site-packages\librosa\core\constantq.py
+5. Modify \Lib\site-packages\librosa\core\constantq.py
     ```
     Ln 1059: complex -> complex128(1)
 5. DB migrate and run server:
@@ -29,5 +29,7 @@
 1. The ```SeeWeed``` is available only on Window OS...
 2. You have to poss your own OpenAI API Key!!
 ## About
+[Openai](https://openai.com)
+[SCE-TTS](https://sce-tts.github.io/#/v2/index)
 [About Contest](https://sites.google.com/yonsei.ac.kr/genaicontest): Yonsei genaicontest  
 Copyright 2023. TeamDahe all rights reserved.
