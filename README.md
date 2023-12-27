@@ -12,8 +12,9 @@
 5. \Lib\site-packages\librosa\core\constantq.py
     ```
     Ln 1059: complex -> complex128(1)
-6. run server:
+5. DB migrate and run server:
     ```
+    python manage.py migrate
     python manage.py runserver
 ## **NOTE**
 You have to posses your own OpenAI API Key!!
