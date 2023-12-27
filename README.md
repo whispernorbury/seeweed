@@ -1,6 +1,6 @@
 # SEEWEED
 The fairy tale maker AI
-## Install
+## Build & Run
 1. setup Virtual environment:
     ```
     py -3.10 -m venv env
