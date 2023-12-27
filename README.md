@@ -1,10 +1,10 @@
 # README
 ## Add Your voice!
-* Import <YourGlowTTS>.tar to
+* Import `<YourGlowTTS>.tar` to
 ```
 /TTS/data/glowtts-v2/
 ```
-* Import <YourHifigan>.tar to
+* Import `<YourHifigan>.tar` to
 ```
 /TTS/data/hifigan-v2/
 ```
