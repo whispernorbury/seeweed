@@ -30,6 +30,7 @@
 2. You have to poss your own OpenAI API Key!!
 ## About
 [Openai](https://openai.com): for `GPT-4, Dalle`  
-[SCE-TTS](https://sce-tts.github.io/#/v2/index): for `TTS(customizable)`  
-[About Contest](https://sites.google.com/yonsei.ac.kr/genaicontest): for `Yonsei genAI contest`  
+[SCE-TTS](https://sce-tts.github.io/#/v2/index): for `TTS(customizable)`
+-
+[Contest Info](https://sites.google.com/yonsei.ac.kr/genaicontest): about `Yonsei genAI contest`  
 ##### Copyright 2023. TeamDahe all rights reserved.
