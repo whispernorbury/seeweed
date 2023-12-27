@@ -28,5 +28,5 @@
 ### **NOTE**
 You have to posses your own OpenAI API Key!!
 ## About
-[About Contest](https://sites.google.com/yonsei.ac.kr/genaicontest): Yonsei genaicontest
+[About Contest](https://sites.google.com/yonsei.ac.kr/genaicontest): Yonsei genaicontest  
 Copyright 2023. TeamDahe all rights reserved.
