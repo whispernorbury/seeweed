@@ -1,14 +1,5 @@
-# README
-## Add Your voice!
-* Import `<YourGlowTTS>.tar` to
-```
-/TTS/data/glowtts-v2/
-```
-* Import `<YourHifigan>.tar` to
-```
-/TTS/data/hifigan-v2/
-```
-## Presetting
+# SEEWEED
+## Install
 1. setup Virtual environment:
     ```
     py -3.10 -m venv env
@@ -25,12 +16,21 @@
     ```
     python manage.py migrate
     python manage.py runserver
+## Add Your voice!
+* Import `<YourGlowTTS>.tar` to
+```
+/TTS/data/glowtts-v2/
+```
+* Import `<YourHifigan>.tar` to
+```
+/TTS/data/hifigan-v2/
+```
 ### **NOTE**
 1. The ```SeeWeed``` is available only on Window OS...
 2. You have to poss your own OpenAI API Key!!
-## About
+## REFERENCE
 [Openai](https://openai.com): for `GPT-4, Dalle`  
-[SCE-TTS](https://sce-tts.github.io/#/v2/index): for `TTS(customizable)`
--
+[SCE-TTS](https://sce-tts.github.io/#/v2/index): for `TTS(customizable)`  
 [Contest Info](https://sites.google.com/yonsei.ac.kr/genaicontest): about `Yonsei genAI contest`  
-##### Copyright 2023. TeamDahe all rights reserved.
+## LICENSE
+##### MIT © TeamDahe
