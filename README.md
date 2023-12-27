@@ -1,9 +1,15 @@
-1. setup Virtual environment, GoTo env:
+1. setup Virtual environment:
+    ```
     py -3.10 -m venv env
+2. turn on virtual environment:
+    ```
     env\Scripts\activate.bat
-2. import libraries:
+4. import libraries:
+    ```
     pip install -r requirements.txt
-3. \Lib\site-packages\librosa\core\constantq.py
+5. \Lib\site-packages\librosa\core\constantq.py
+    ```
     Ln 1059: complex -> complex128(1)
-4. run server:
+6. run server:
+    ```
     python manage.py runserver
