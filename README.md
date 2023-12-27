@@ -29,7 +29,7 @@
 1. The ```SeeWeed``` is available only on Window OS...
 2. You have to poss your own OpenAI API Key!!
 ## About
-[Openai](https://openai.com) GPT-4, Dalle  
-[SCE-TTS](https://sce-tts.github.io/#/v2/index) TTS(customizable)  
-[About Contest](https://sites.google.com/yonsei.ac.kr/genaicontest): Yonsei genaicontest  
-Copyright 2023. TeamDahe all rights reserved.
+[Openai](https://openai.com) for `GPT-4, Dalle`  
+[SCE-TTS](https://sce-tts.github.io/#/v2/index) for `TTS(customizable)`  
+[About Contest](https://sites.google.com/yonsei.ac.kr/genaicontest): Yonsei genAI contest  
+#### Copyright 2023. TeamDahe all rights reserved.
