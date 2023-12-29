@@ -127,11 +127,11 @@ def ask_openai(input_v, input_name, SelectedModel, input_age):
         NewUserAudio.database_audio_title = input_name
         NewUserAudio.save()
 
-
+    # Have to modify prompt of dalle2
     for x in range(len(grouped_sentences)):
         response = client.images.generate(
             model="dall-e-3",
-            prompt=grouped_sentences[x],
+            prompt=grouped_sentences[x], # here
             size="1024x1024",
             quality="standard",
             n=1,
