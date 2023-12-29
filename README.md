@@ -35,3 +35,7 @@ The fairy tale maker AI
 [Contest Info](https://sites.google.com/yonsei.ac.kr/genaicontest): about `Yonsei genAI contest`  
 ## LICENSE
 ##### MIT © TeamDahe
+
+## TODO
+- Modify Dalle2 Prompt more consistent
+- Upgrade UI/UX
