@@ -1,5 +1,5 @@
 # SEEWEED
-The fairy tale maker AI
+The fairy tale maker
 ## Build & Run
 1. setup Virtual environment:
     ```
